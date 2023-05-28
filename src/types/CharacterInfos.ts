@@ -3,15 +3,15 @@ import { FirstAffix } from './enums/FirstAffix'
 import { Gender } from './enums/Gender'
 import { Role } from './enums/Role'
 
-interface AffixInfos {
+export interface AffixInfos {
 	affix: FirstAffix
 	level: number
 	score: number
 	time: number
-	isTimed: boolean
+	keyUpgrades: number
 }
 
-type DungeonInfos = {
+export type DungeonInfos = {
 	id: DungeonId
 	name: string
 	maxTime: number
