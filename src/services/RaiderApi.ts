@@ -31,7 +31,6 @@ class RaiderApi {
 
 			if (!data.ok) {
 				const error: RaiderApiErrorResponse = await data.json()
-				console.log(error)
 				throw new RaiderApiError(error.message, error.statusCode)
 			}
 

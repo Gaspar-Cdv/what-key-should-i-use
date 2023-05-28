@@ -31,13 +31,14 @@ class CharacterInfosService {
 			spec: active_spec_name,
 			role: active_spec_role,
 			avatar: thumbnail_url,
-			totalScore: mythic_plus_scores_by_season[0].scores.all
+			totalScore: mythic_plus_scores_by_season[0].scores.all,
+			dungeons: {}
 		} as CharacterInfos
 
 		const allRuns = mythic_plus_best_runs.concat(mythic_plus_alternate_runs)
 
 		return allRuns.reduce((characterInfos, run) => {
-			const { short_name, dungeon, affixes, score, mythic_level, clear_time_ms, par_time_ms } = run
+			const { short_name, dungeon, affixes, score, mythic_level, clear_time_ms, par_time_ms, num_keystone_upgrades } = run
 			const affix = affixes[0].name
 
 			return {
@@ -57,7 +58,7 @@ class CharacterInfosService {
 								level: mythic_level,
 								score,
 								time: clear_time_ms,
-								isTimed: clear_time_ms < par_time_ms
+								keyUpgrades: num_keystone_upgrades
 							}
 						}
 					}
