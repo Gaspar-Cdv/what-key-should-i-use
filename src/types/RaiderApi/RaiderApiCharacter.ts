@@ -17,7 +17,7 @@ export interface RaiderApiCharacter {
   thumbnail_url: string
   region: Region
   realm: string
-  last_crawled_at: Date
+  last_crawled_at: string // ISO8601
   profile_url: string
   profile_banner: string
 	mythic_plus_best_runs: RaiderApiDungeon[]

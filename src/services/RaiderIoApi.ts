@@ -2,10 +2,13 @@ import { CharacterRequest } from '../types/CharacterRequest'
 import { RaiderApiCharacter } from '../types/RaiderApi/RaiderApiCharacter'
 import { RaiderApiCurrentAffixes } from '../types/RaiderApi/RaiderApiCurrentAffixes'
 import { RaiderApiErrorResponse } from '../types/RaiderApi/RaiderApiErrorResponse'
+import { RaiderApiStaticData } from '../types/RaiderApi/RaiderApiStaticData'
 import { Region } from '../types/enums/Region'
 import { RaiderApiError } from '../types/errors/RaiderApiError'
 
-class RaiderApi {
+const DRAGONFLIGHT_ID = '9'
+
+class RaiderIoApi {
 	fetchCharacterProfile = async (params: CharacterRequest): Promise<RaiderApiCharacter> => {
 		return this.call('/characters/profile', {
 			...params,
@@ -17,10 +20,16 @@ class RaiderApi {
 		})
 	}
 
-	fetchCurrentAffixes = async (region: Region): Promise<RaiderApiCurrentAffixes> => {
+	fetchAffixes = async (region: Region): Promise<RaiderApiCurrentAffixes> => {
 		return this.call('/mythic-plus/affixes', {
 			region,
 			locale: 'en'
+		})
+	}
+
+	fetchStaticData = async (): Promise<RaiderApiStaticData> => {
+		return this.call('/mythic-plus/static-data', {
+			expansion_id: DRAGONFLIGHT_ID
 		})
 	}
 
@@ -58,4 +67,4 @@ class RaiderApi {
 	
 }
 
-export const raiderApi = new RaiderApi()
+export const raiderIoApi = new RaiderIoApi()

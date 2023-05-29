@@ -1,12 +1,11 @@
 import { RaiderApiDungeonAffix } from './RaiderApiDungeonAffix'
-import { DungeonId } from '../enums/DungeonId'
 import { FirstAffix } from '../enums/FirstAffix'
 
 export interface RaiderApiDungeon {
 	dungeon: string
-	short_name: DungeonId
+	short_name: string
 	mythic_level: number
-	completed_at: Date
+	completed_at: string // ISO8601
 	clear_time_ms: number
 	par_time_ms: number
 	num_keystone_upgrades: number
