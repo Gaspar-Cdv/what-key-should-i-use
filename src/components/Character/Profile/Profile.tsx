@@ -61,7 +61,7 @@ const useStyles = createUseStyles({
 		gap: 5,
 		'&::after': {
 			content: '""',
-			backgroundImage: `url('./images/roles/${role}.png')`,
+			backgroundImage: `url('./images/roles/${role.toLowerCase()}.png')`,
 			backgroundSize: 30,
 			height: 30,
 			width: 30,
