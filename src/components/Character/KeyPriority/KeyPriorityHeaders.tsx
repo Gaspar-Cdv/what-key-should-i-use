@@ -1,14 +1,12 @@
 import { createUseStyles } from 'react-jss'
+import InfoTooltip from '../../common/InfoTooltip'
 
 const useStyles = createUseStyles({
 	header: {
 		display: 'flex',
 		alignItems: 'center',
-		gap: 20,
-		fontSize: 20,
-		'& img': {
-			borderRadius: 5
-		}
+		gap: 10,
+		fontSize: 20
 	}
 })
 
@@ -36,6 +34,9 @@ function KeyPrioritiesHeaders () {
 				<th>
 					<div className={classes.header}>
 						Score
+						<InfoTooltip>
+							The number between parenthesis corresponds to the score you could earn if you run this key at the same level as your highest key.
+						</InfoTooltip>
 					</div>
 				</th>
 			</tr>

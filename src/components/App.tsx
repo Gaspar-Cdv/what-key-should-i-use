@@ -1,11 +1,13 @@
 import { useEffect } from 'react'
 import { createUseStyles } from 'react-jss'
+import { Tooltip as ReactTooltip } from 'react-tooltip'
 import { useFetchCharacterInfos, useFetchStaticData } from '../hooks/useFetchRaiderIo'
 import { useLocalStorage } from '../hooks/useLocalStorage'
 import { Region } from '../types/enums/Region'
 import CharacterPage from './Character/CharacterPage'
-import Header from './Header/Header'
 import Footer from './Footer/Footer'
+import Header from './Header/Header'
+import { TOOLTIP_ID } from './common/Tooltip'
 
 const useStyles = createUseStyles({
 	app: {
@@ -25,6 +27,12 @@ const useStyles = createUseStyles({
 		width: 900,
 		maxWidth: 'calc(100% - 60px)',
 		margin: 30,
+	},
+	tooltip: {
+		fontWeight: 'normal',
+		fontSize: 16,
+		maxWidth: 400,
+		textAlign: 'left'
 	}
 })
 
@@ -45,31 +53,35 @@ function App () {
 	}, [region])
 
 	return (
-		<div className={classes.app}>
-			<div className={classes.container}>
-				<Header
-					region={region}
-					realm={realm}
-					characterName={name}
-					onRegionChange={setRegion}
-					onRealmChange={setRealm}
-					onCharacterNameChange={setName}
-					onSubmit={fetchCharacterInfos}
-					pending={pending}
-				/>
+		<>
+			<div className={classes.app}>
+				<div className={classes.container}>
+					<Header
+						region={region}
+						realm={realm}
+						characterName={name}
+						onRegionChange={setRegion}
+						onRealmChange={setRealm}
+						onCharacterNameChange={setName}
+						onSubmit={fetchCharacterInfos}
+						pending={pending}
+					/>
 
-				<CharacterPage
-					characterInfos={characterInfos}
-					weeklyAffix={weeklyAffix}
-					currentSeasonDungeons={mythicDungeons}
-					scoreTiers={scoreTiers}
-					pending={pending}
-					error={staticDataError ?? characterInfosError}
-				/>
+					<CharacterPage
+						characterInfos={characterInfos}
+						weeklyAffix={weeklyAffix}
+						currentSeasonDungeons={mythicDungeons}
+						scoreTiers={scoreTiers}
+						pending={pending}
+						error={staticDataError ?? characterInfosError}
+					/>
+				</div>
+
+				<Footer />
 			</div>
 
-			<Footer />
-		</div>
+			<ReactTooltip id={TOOLTIP_ID} className={classes.tooltip} />
+		</>
 	)
 }
 

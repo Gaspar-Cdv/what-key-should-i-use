@@ -3,6 +3,8 @@
 ## Description
 "What key should I use?" is a React application that retrieves information about the Mythic Dungeon Score of a given character in World of Warcraft using the Raider.IO API. It provides a prioritized list of dungeons based on their scores and generates a query to simplify searching with the Premade Group Filter addon in the game.
 
+An example can be found here: https://www.gasparchefdeville.com/wow-tool/
+
 ## Features
 - Retrieve Mythic Dungeon Score data for a WoW character using the Raider.IO API
 - Prioritize dungeons based on their scores

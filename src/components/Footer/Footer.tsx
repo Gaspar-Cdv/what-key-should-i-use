@@ -28,7 +28,7 @@ function Footer () {
 			<span>Created by Gaspar Cdv with <a href='https://raider.io/api' target='_blank'>Raider.io API</a></span>
 			<span className={classes.github}>
 				<Github />
-				<a href='https://github.com/Gaspar-Cdv/what-key-should-i-use' target='_blank'>Code source</a>
+				<a href='https://github.com/Gaspar-Cdv/what-key-should-i-use' target='_blank'>Source code</a>
 			</span>
 		</div>
 	)
