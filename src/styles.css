@@ -1,0 +1,26 @@
+body {
+	margin: 0;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+#root {
+	background-image: url('./images/background.jpg');
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+	background-color: #000066;
+	color: white;
+	font-family: sans-serif;
+}
+
+a, a:visited, a:active {
+  color: #ff6600; 
+	text-decoration: none;
+}
+
+a:hover {
+  color: #ff8c33;
+}
