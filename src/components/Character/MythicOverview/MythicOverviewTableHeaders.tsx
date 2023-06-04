@@ -31,7 +31,7 @@ function MythicOverviewTableHeaders () {
 					.map(affix => (
 						<th key={affix}>
 							<div className={classes.header}>
-								<img src={`./images/${affix}.jpg`} />
+								<img src={`./images/${affix.toLowerCase()}.jpg`} />
 								{affix}
 							</div>
 						</th>
