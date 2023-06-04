@@ -1,6 +1,6 @@
 import { createUseStyles } from 'react-jss'
 import { FirstAffix } from '../../../types/enums/FirstAffix'
-import { byTyrannicalFirst } from './MythicOverviewTable'
+import { byTyrannicalFirst } from './MythicOverview'
 
 const useStyles = createUseStyles({
 	header: {
@@ -14,7 +14,7 @@ const useStyles = createUseStyles({
 	}
 })
 
-function MythicOverviewTableHeaders () {
+function MythicOverviewHeaders () {
 	const classes = useStyles()
 
 	return (
@@ -42,4 +42,4 @@ function MythicOverviewTableHeaders () {
 	)
 }
 
-export default MythicOverviewTableHeaders
+export default MythicOverviewHeaders

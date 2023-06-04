@@ -59,13 +59,13 @@ const useStyles = createUseStyles({
 	}
 })
 
-interface MythicOverviewTableCellProps {
+interface MythicOverviewCellProps {
 	dungeon: MythicDungeon
 	affix: FirstAffix
 	getAllScoresByAffix: (affix: FirstAffix) => number[]
 }
 
-function MythicOverviewTableCell ({ dungeon, affix, getAllScoresByAffix }: MythicOverviewTableCellProps) {
+function MythicOverviewCell ({ dungeon, affix, getAllScoresByAffix }: MythicOverviewCellProps) {
 	const dungeonRun = dungeon.runs.find(run => run.affix === affix)!
 	const keyColor = dungeonRun.time != null ? getColor(getAllScoresByAffix(affix), dungeonRun.score) : undefined
 	const timeColor = dungeonRun.keyUpgrades != null ? COLOR_PANEL[dungeonRun.keyUpgrades] : undefined
@@ -113,4 +113,4 @@ function MythicOverviewTableCell ({ dungeon, affix, getAllScoresByAffix }: Mythi
 	)
 }
 
-export default MythicOverviewTableCell
+export default MythicOverviewCell

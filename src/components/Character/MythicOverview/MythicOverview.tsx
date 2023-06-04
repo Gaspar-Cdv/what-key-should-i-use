@@ -1,8 +1,8 @@
 import { createUseStyles } from 'react-jss'
 import { CharacterInfos } from '../../../types/CharacterInfos'
 import { FirstAffix } from '../../../types/enums/FirstAffix'
-import MythicOverviewTableHeaders from './MythicOverviewTableHeaders'
-import MythicOverviewTableRow from './MythicOverviewTableRow'
+import MythicOverviewHeaders from './MythicOverviewHeaders'
+import MythicOverviewRow from './MythicOverviewRow'
 import { useCallback } from 'react'
 
 const useStyles = createUseStyles({
@@ -25,11 +25,11 @@ export function byTyrannicalFirsts <T> (getter: (item: T) => FirstAffix) {
 	return (a: T, b: T) => getter(a) === FirstAffix.TYRANNICAL ? -1 : getter(b) === FirstAffix.TYRANNICAL ? 1 : 0
 }
 
-interface MythicOverviewTableProps {
+interface MythicOverviewProps {
 	characterInfos: CharacterInfos
 }
 
-function MythicOverviewTable ({ characterInfos }: MythicOverviewTableProps) {
+function MythicOverview ({ characterInfos }: MythicOverviewProps) {
 	const classes = useStyles()
 
 	const getAllScoresByAffix = useCallback((affix: FirstAffix) => {
@@ -41,12 +41,12 @@ function MythicOverviewTable ({ characterInfos }: MythicOverviewTableProps) {
 
 	return (
 		<table className={classes.table}>
-			<MythicOverviewTableHeaders />
+			<MythicOverviewHeaders />
 			<tbody>
 				{characterInfos.dungeons
 					.sort((a, b) => a.name.localeCompare(b.name))
 					.map(dungeon => (
-						<MythicOverviewTableRow
+						<MythicOverviewRow
 							key={dungeon.shortName}
 							dungeon={dungeon}
 							getAllScoresByAffix={getAllScoresByAffix}
@@ -58,4 +58,4 @@ function MythicOverviewTable ({ characterInfos }: MythicOverviewTableProps) {
 	)
 }
 
-export default MythicOverviewTable
+export default MythicOverview
