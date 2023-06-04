@@ -1,3 +1,4 @@
+import { Faction } from '../enums/Faction'
 import { Gender } from '../enums/Gender'
 import { Region } from '../enums/Region'
 import { Role } from '../enums/Role'
@@ -11,7 +12,7 @@ export interface RaiderApiCharacter {
   active_spec_name: string
   active_spec_role: Role
   gender: Gender
-  faction: 'horde' | 'alliance'
+  faction: Faction
   achievement_points: number
   honorable_kills: number
   thumbnail_url: string
@@ -22,5 +23,5 @@ export interface RaiderApiCharacter {
   profile_banner: string
 	mythic_plus_best_runs: RaiderApiDungeon[]
 	mythic_plus_alternate_runs: RaiderApiDungeon[]
-	mythic_plus_scores_by_season: [RaiderApiScores]
+	mythic_plus_scores_by_season: RaiderApiScores[]
 }
