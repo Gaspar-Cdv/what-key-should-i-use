@@ -4,7 +4,7 @@ import { Dungeon } from '../../types/MythicDungeon'
 import { FirstAffix } from '../../types/enums/FirstAffix'
 import Loader from '../common/Loader'
 import KeyPriorities from './KeyPriority/KeyPriorities'
-import MythicOverviewTable from './MythicOverview/MythicOverviewTable'
+import MythicOverview from './MythicOverview/MythicOverview'
 import Profile from './Profile/Profile'
 import { RaiderApiScoreTiers } from '../../types/RaiderApi/RaiderApiScoreTiers'
 import Section from '../common/Section'
@@ -57,7 +57,7 @@ function CharacterPage ({ characterInfos, weeklyAffix, currentSeasonDungeons, sc
 			</Section>
 
 			<Section title='Mythic overview'>
-				<MythicOverviewTable characterInfos={characterInfos} />
+				<MythicOverview characterInfos={characterInfos} />
 			</Section>
 
 				<KeyPriorities

@@ -1,15 +1,16 @@
 import { MythicDungeon } from '../../../types/MythicDungeon'
 import { FirstAffix } from '../../../types/enums/FirstAffix'
-import { byTyrannicalFirst } from './MythicOverviewTable'
-import MythicOverviewTableCell from './MythicOverviewTableCell'
+import MythicOverviewCell from './MythicOverviewCell'
 import DungeonCell from '../../common/DungeonCell'
 
-interface MythicOverviewTableRowProps {
+const byTyrannicalFirst = (a: FirstAffix, b: FirstAffix) => a === FirstAffix.TYRANNICAL ? -1 : b === FirstAffix.TYRANNICAL ? 1 : 0
+
+interface MythicOverviewRowProps {
 	dungeon: MythicDungeon
 	getAllScoresByAffix: (affix: FirstAffix) => number[]
 }
 
-function MythicOverviewTableRow ({ dungeon, getAllScoresByAffix }: MythicOverviewTableRowProps) {
+function MythicOverviewRow ({ dungeon, getAllScoresByAffix }: MythicOverviewRowProps) {
 	return (
 		<tr>
 			<DungeonCell dungeon={dungeon} />
@@ -17,7 +18,7 @@ function MythicOverviewTableRow ({ dungeon, getAllScoresByAffix }: MythicOvervie
 			{Object.values(FirstAffix)
 				.sort(byTyrannicalFirst)
 				.map(affix => (
-					<MythicOverviewTableCell
+					<MythicOverviewCell
 						key={`${dungeon.shortName}-${affix}`}
 						dungeon={dungeon}
 						affix={affix}
@@ -29,4 +30,4 @@ function MythicOverviewTableRow ({ dungeon, getAllScoresByAffix }: MythicOvervie
 	)
 }
 
-export default MythicOverviewTableRow
+export default MythicOverviewRow

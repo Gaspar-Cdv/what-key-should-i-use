@@ -2,9 +2,11 @@ import { CharacterInfos } from '../../../types/CharacterInfos'
 import { MythicDungeonRun } from '../../../types/MythicDungeon'
 import { FirstAffix } from '../../../types/enums/FirstAffix'
 import PremadeGroupFilter from './PremadeGroupFilter'
-import KeyPrioritiesTable from './KeyPriorityTable'
 import WeeklyAffix from './WeeklyAffix'
 import Section from '../../common/Section'
+import Table from '../../common/Table'
+import KeyPrioritiesHeaders from './KeyPriorityHeaders'
+import KeyPrioritiesRow from './KeyPriorityRow'
 
 interface KeyPrioritiesProps {
 	weeklyAffix: FirstAffix
@@ -27,10 +29,16 @@ function KeyPriorities ({ characterInfos, weeklyAffix }: KeyPrioritiesProps) {
 			<Section title='Key priorities'>
 				<WeeklyAffix weeklyAffix={weeklyAffix} />
 
-				<KeyPrioritiesTable
-					dungeons={priorities}
-					currentDungeonsScores={currentDungeonsScores}
-				/>
+				<Table headers={<KeyPrioritiesHeaders />}>
+					{priorities.map((priority, index) => (
+						<KeyPrioritiesRow
+							key={priority.name}
+							dungeon={priority}
+							index={index + 1}
+							currentDungeonsScores={currentDungeonsScores}
+						/>
+					))}
+				</Table>
 			</Section>
 
 
