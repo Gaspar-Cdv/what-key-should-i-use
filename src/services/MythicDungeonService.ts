@@ -19,6 +19,7 @@ class MythicDungeonService {
 			class: character_class,
 			active_spec_name,
 			active_spec_role,
+			faction,
 			thumbnail_url,
 			mythic_plus_best_runs,
 			mythic_plus_alternate_runs,
@@ -32,6 +33,7 @@ class MythicDungeonService {
 			class: character_class,
 			spec: active_spec_name,
 			role: active_spec_role,
+			faction,
 			avatar: thumbnail_url,
 			totalScore: mythic_plus_scores_by_season[0].scores.all,
 			dungeons: this.initialiseMythicDungeons(currentSeasonDungeons!)

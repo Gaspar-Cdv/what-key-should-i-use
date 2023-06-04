@@ -2,6 +2,7 @@ import { CharacterRequest } from '../types/CharacterRequest'
 import { RaiderApiCharacter } from '../types/RaiderApi/RaiderApiCharacter'
 import { RaiderApiCurrentAffixes } from '../types/RaiderApi/RaiderApiCurrentAffixes'
 import { RaiderApiErrorResponse } from '../types/RaiderApi/RaiderApiErrorResponse'
+import { RaiderApiScoreTiers } from '../types/RaiderApi/RaiderApiScoreTiers'
 import { RaiderApiStaticData } from '../types/RaiderApi/RaiderApiStaticData'
 import { Region } from '../types/enums/Region'
 import { RaiderApiError } from '../types/errors/RaiderApiError'
@@ -31,6 +32,10 @@ class RaiderIoApi {
 		return this.call('/mythic-plus/static-data', {
 			expansion_id: DRAGONFLIGHT_ID
 		})
+	}
+
+	fetchScoreTiers = async (): Promise<RaiderApiScoreTiers[]> => {
+		return this.call('/mythic-plus/score-tiers')
 	}
 
 	private call = async <T>(path: string, params?: Record<string, string>): Promise<T> => {
