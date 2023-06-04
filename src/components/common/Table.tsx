@@ -22,7 +22,7 @@ const useStyles = createUseStyles({
 interface TableProps {
 	headers: ReactElement
 	fixedColumns?: boolean
-	children: ReactElement | ReactElement[]
+	children: ReactElement[]
 }
 
 function Table ({ headers, fixedColumns = false, children }: TableProps) {

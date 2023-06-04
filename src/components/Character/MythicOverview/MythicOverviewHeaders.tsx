@@ -1,6 +1,7 @@
 import { createUseStyles } from 'react-jss'
 import { FirstAffix } from '../../../types/enums/FirstAffix'
-import { byTyrannicalFirst } from './MythicOverview'
+import { SortOrder } from '../../../hooks/useSort'
+import SortIcon from '../../common/SortIcon'
 
 const useStyles = createUseStyles({
 	header: {
@@ -11,28 +12,33 @@ const useStyles = createUseStyles({
 		'& img': {
 			borderRadius: 5
 		}
+	},
+	title: {
+		flex: 1
 	}
 })
 
-function MythicOverviewHeaders () {
+export type ColumnName = FirstAffix | 'Dungeon'
+
+interface MythicOverviewHeaders {
+	orderState: Record<ColumnName, SortOrder>
+	toggleColumn: (column: ColumnName) => void
+	activeColumn: ColumnName
+}
+
+function MythicOverviewHeaders ({ toggleColumn, orderState, activeColumn }: MythicOverviewHeaders) {
 	const classes = useStyles()
 
 	return (
 		<thead>
 			<tr>
-				<th>
-					<div className={classes.header}>
-						<img src='./images/dungeon.jpg' />
-						Dungeon
-					</div>
-				</th>
-				{Object.values(FirstAffix)
-					.sort(byTyrannicalFirst)
-					.map(affix => (
-						<th key={affix}>
+				{(['Dungeon', 'Tyrannical', 'Fortified'] as ColumnName[])
+					.map((column) => (
+						<th key={column}>
 							<div className={classes.header}>
-								<img src={`./images/${affix.toLowerCase()}.jpg`} />
-								{affix}
+								<img src={`./images/${column.toLowerCase()}.jpg`} />
+								<span className={classes.title}>{column}</span>
+								<SortIcon order={orderState[column]} active={activeColumn === column} onClick={() => toggleColumn(column)} />
 							</div>
 						</th>
 					))
