@@ -4,6 +4,8 @@ import { MythicDungeon } from '../../../types/MythicDungeon'
 import { FirstAffix } from '../../../types/enums/FirstAffix'
 import { COLOR_PANEL, formatTime, getColor } from '../../../utils/stringUtils'
 import ProgressBar from '../../common/ProgressBar'
+import Tooltip from '../../common/Tooltip'
+import MythicOverviewTooltip from './MythicOverviewTooltip'
 
 interface JSSProps {
 	keyColor?: string
@@ -42,6 +44,18 @@ const useStyles = createUseStyles({
 		display: 'flex',
 		alignItems: 'center',
 		gap: 5
+	},
+	tooltip: {
+		borderSpacing: '10px',
+		'& td': {
+			'&:first-child': {
+				color: 'lightgrey',
+				textAlign: 'right'
+			},
+			'&:last-child': {
+				fontWeight: 'bold'
+			}
+		}
 	}
 })
 
@@ -58,7 +72,18 @@ function MythicOverviewTableCell ({ dungeon, affix, getAllScoresByAffix }: Mythi
 	const classes = useStyles({ keyColor, timeColor })
 
 	return (
-		<td>
+		<Tooltip
+			wrapper='td'
+			content={(
+				<MythicOverviewTooltip
+					dungeon={dungeonRun}
+					keyColor={keyColor}
+					timeColor={timeColor}
+					maxTime={dungeon.maxTime}
+					className={classes.tooltip}
+				/>
+			)}
+		>
 			<div className={classes.cell}>
 				<div className={classes.infos}>
 					<span className={classes.score}>+{dungeonRun?.level ?? 0}</span>
@@ -72,9 +97,9 @@ function MythicOverviewTableCell ({ dungeon, affix, getAllScoresByAffix }: Mythi
 							{formatTime(dungeonRun?.time)}
 						</span>
 
-					{dungeonRun != null && (
-						<span>+{dungeonRun.keyUpgrades}</span>
-					)}
+						{dungeonRun != null && (
+							<span>+{dungeonRun.keyUpgrades}</span>
+						)}
 					</div>
 
 					<ProgressBar
@@ -84,7 +109,7 @@ function MythicOverviewTableCell ({ dungeon, affix, getAllScoresByAffix }: Mythi
 					/>
 				</div>
 			</div>
-		</td>
+		</Tooltip>
 	)
 }
 
