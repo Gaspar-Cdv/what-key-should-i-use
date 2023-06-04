@@ -28,7 +28,7 @@ function WeeklyAffix ({ weeklyAffix }: WeeklyAffixProps) {
 				Weekly affix:<br />
 				<span className={classes.affixName}>{weeklyAffix}</span>
 			</div>
-			<img src={`./images/${weeklyAffix}.jpg`} />
+			<img src={`./images/${weeklyAffix.toLowerCase()}.jpg`} />
 		</div>
 	)
 }

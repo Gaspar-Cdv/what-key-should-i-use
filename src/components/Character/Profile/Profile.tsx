@@ -105,7 +105,7 @@ function Profile ({ characterInfos, scoreTiers }: ProfileProps) {
 					<div>{characterInfos.class}</div>
 					<div>{characterInfos.spec}</div>
 				</div>
-				<img src={classImg} />
+				<img src={classImg.toLowerCase()} />
 				<span className={classes.role}>{characterInfos.role}</span>
 			</div>
 		</div>

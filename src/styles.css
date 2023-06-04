@@ -7,11 +7,11 @@ body {
 }
 
 #root {
-	background-image: url('./images/background.jpg');
+	/* background-image: url('./images/background.jpg'); */
 	background-size: cover;
 	background-position: center;
 	background-attachment: fixed;
-	background-color: #000066;
+	background-color: #222;
 	color: white;
 	font-family: sans-serif;
 }
